@@ -1,0 +1,20 @@
+########################
+#  ENVIRONMENT SETUP
+########################
+
+APPLICATION=../
+APPLICATION_PORT=22
+
+########################
+#  VERSION
+########################
+WORKSPACE_PORT=8500
+ENV_CONSUL_VERSION=0.8.3
+ENV_CONSULUI_VERSION=0.8.3
+EMV_CONSULTEMPLATE_VERSION=0.18.3
+ENV_RUBY_VERSION=2.4.1
+
+########################
+#  OPTIONAL ARGUMENTS
+########################
+ENV_CONSUL_OPTIONS=-server -bootstrap-expect 1 -client 0.0.0.0 -ui    # minimal server options
