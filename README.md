@@ -15,7 +15,7 @@ Docker CentOS Application (Application Container), this image includes:
   - [ ] gem pg, mysql2, sequel_pg (need other containers)
 * npm
   - [X] npm test unit (ChaiJS, TV4, Newman)
-* javascript 
+* js package manager
   - [X] yarn
   - [X] bower
   - [X] grunt
