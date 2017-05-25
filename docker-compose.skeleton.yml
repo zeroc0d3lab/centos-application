@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  application:
+    build:
+      context: .
+    ports:
+      - "22:22"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - CONSULTEMPLATE_VERSION=0.18.3
+      - RUBY_VERSION=2.4.1
+      - CONSUL_AGENT=172.16.0.1                                     # agent hostname
+      - CONSUL_PORT=8500                                            # agent port
+      - CONSUL_TLS=0                                                # enable TLS
+      - CONSUL_SERVICENAME=centos-base-workspace                    # service name to register
+      - CONSUL_SERVICEPORT=22                                       # service port
+    tty: true
+    network:
+      - frontend
+      - backend
+
+### Networks Setup ############################################
+
+networks:
+  frontend:
+    driver: "bridge"
+  backend:
+    driver: "bridge"
+
+### Volumes Setup #############################################
+
+volumes:
+  application:
+    driver: "local"
