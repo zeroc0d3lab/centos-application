@@ -1,21 +1,43 @@
 version: '2'
 
 services:
-  application:
-    build:
-      context: .
+  base-workspace:
+    image: zeroc0d3lab/centos-base-workspace
     ports:
-      - "22:22"
+      - "${WORKSPACE_PORT}:8500"
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - CONSULTEMPLATE_VERSION=0.18.3
-      - RUBY_VERSION=2.4.1
-      - CONSUL_AGENT=172.16.0.1                                     # agent hostname
-      - CONSUL_PORT=8500                                            # agent port
-      - CONSUL_TLS=0                                                # enable TLS
-      - CONSUL_SERVICENAME=centos-base-workspace                    # service name to register
-      - CONSUL_SERVICEPORT=22                                       # service port
+      - CONSUL_VERSION=${ENV_CONSUL_VERSION}
+      - CONSULUI_VERSION=${ENV_CONSULUI_VERSION}
+      - CONSULTEMPLATE_VERSION=${ENV_CONSULTEMPLATE_VERSION}
+      - RUBY_VERSION=${ENV_RUBY_VERSION}
+      - CONSUL_OPTIONS=${ENV_CONSUL_OPTIONS}          # minimal server options
+
+  application:
+    depends_on:
+      - base-workspace
+    build:
+      context: .
+    ports:
+      - "${APPLICATION_PORT}:22"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${APPLICATION}:/application
+    environment:
+      - CONSUL_AGENT=consul                           # consul agent hostname/IP
+      #- CONSUL_PORT=8500                             # consul agent port
+      #- CONSUL_KEYPREFIX=path/prefix/                # consul key prefix path
+      - CONSUL_SERVICENAME=openssh                    # consul service name
+      - CONSUL_SERVICETAGS=dev                        # consul service tag
+      - CONSUL_SERVICEPORT=22                         # consul service port
+      - CONSUL_CHECKTYPE=tcp                          # consul health check type
+      #- OPENSSH_PASSWORDAUTHENTICATION=no            # enable authentication by password
+      #- OPENSSH_SFTPUSERS=                           # SFTP users to create (comma separated list)
+      #- OPENSSH_SFTPGROUP=sftp                       # SFTP group for users
+      #- OPENSSH_SFTPGID=101                          # GID of SFTP group
+      #- OPENSSH_SFTPCHROOT=1                         # enable chroot for SFTP
+      #- OPENSSH_SFTPCHROOTUSERDIR=public_html        # user directory inside chroot
     tty: true
     networks:
       - frontend
