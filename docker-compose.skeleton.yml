@@ -17,7 +17,7 @@ services:
       - CONSUL_SERVICENAME=centos-base-workspace                    # service name to register
       - CONSUL_SERVICEPORT=22                                       # service port
     tty: true
-    network:
+    networks:
       - frontend
       - backend
 
