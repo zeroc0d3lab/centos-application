@@ -16,8 +16,6 @@ services:
 
   application:
     image: zeroc0d3lab/centos-application
-    build:
-      context: ./centos-application
     ports:
       - "${APPLICATION_PORT}:22"
     volumes:

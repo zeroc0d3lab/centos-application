@@ -2,8 +2,7 @@ version: '2'
 
 services:
   base-workspace:
-    build:
-      context: ./centos-base-workspace
+    image: zeroc0d3lab/centos-base-workspace
     ports:
       - "${WORKSPACE_PORT}:8500"
     volumes:
@@ -16,10 +15,10 @@ services:
       - CONSUL_OPTIONS=${CONSUL_OPTIONS}              # minimal server options
 
   application:
+    build:
+      context: .
     depends_on:
       - base-workspace
-    build:
-      context: ./centos-application
     ports:
       - "${APPLICATION_PORT}:22"
     volumes:
