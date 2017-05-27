@@ -4,7 +4,7 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 #-----------------------------------------------------------------------------
 # Create Workspace Application Folder
 #-----------------------------------------------------------------------------
-RUN ["/bin/mkdir", "-p", "/application"]
+RUN ["mkdir", "-p", "/application"]
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
