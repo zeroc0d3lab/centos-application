@@ -1,18 +1,27 @@
 FROM zeroc0d3lab/centos-base-workspace:latest
 MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 
-## CREATE WORKSPACE APPLICATION FOLDER ##
-RUN mkdir -p /application
+#-----------------------------------------------------------------------------
+# Create Workspace Application Folder
+#-----------------------------------------------------------------------------
+RUN ["/bin/mkdir", "-p", "/application"]
 
-## SETUP LOCALE ##
-RUN ["/usr/bin/localedef", "-i", "en_US", "-f", "UTF-8", "en_US.UTF-8"]
-
-## SET PORT ##
+#-----------------------------------------------------------------------------
+# Set PORT Docker Container
+#-----------------------------------------------------------------------------
 EXPOSE 22
 
-## SET VOLUME ##
+#-----------------------------------------------------------------------------
+# Set Volume Application
+#-----------------------------------------------------------------------------
 VOLUME ["/application"]
 
-## RUN INIT ##
+#-----------------------------------------------------------------------------
+# Run Init Docker Container
+#-----------------------------------------------------------------------------
 ENTRYPOINT ["/init"]
 CMD []
+
+## NOTE:
+## *) Run vim then >> :PluginInstall
+## *) Update plugin vim (vundle) >> :PluginUpdate
