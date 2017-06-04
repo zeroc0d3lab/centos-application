@@ -24,5 +24,22 @@ This docker image includes:
   - [X] yeoman
 * composer
 
+## Configuration:
+* Generate ssh key for your access
+  - ssh-keygen -t rsa
+* Add your id_rsa.pub to environment (.env) file
+* Add your id_rsa.pub to SSH_AUTHORIZED_KEYS in Dockerfile
+* Rebuild your docker container
+  ```
+  docker-compose build && docker-compose up --force-recreate
+  ```
+* Check your IP Address container
+  - `docker ps`
+  - `docker inspect [name_container]` (eg: application_1)
+* Access ssh
+  - `ssh docker@[ip_address_container]`
+  - superuser access (root)
+    `sudo su` (password: docker)
+
 ## License
 GNU General Public License v2
