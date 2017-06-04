@@ -25,8 +25,10 @@ This docker image includes:
 * composer
 
 ## Configuration:
-* Generate ssh key for your access
-  - ssh-keygen -t rsa
+* Generate ssh key for your access:
+  ```
+  ssh-keygen -t rsa
+  ```
 * Add your id_rsa.pub to environment (.env) file
 * Add your id_rsa.pub to SSH_AUTHORIZED_KEYS in Dockerfile
 * Rebuild your docker container
@@ -34,12 +36,30 @@ This docker image includes:
   docker-compose build && docker-compose up --force-recreate
   ```
 * Check your IP Address container
-  - `docker ps`
-  - `docker inspect [name_container]` (eg: application_1)
+  - Show running container docker
+    ```
+    docker ps
+    ```
+  - Show the IP Address container
+    ```
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_name_or_id]
+    ```
+    * Read [this](http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host)
+  - Inspect container
+    ```
+    docker inspect [name_container]
+    ```
+    (eg: application_1)
 * Access ssh
-  - `ssh docker@[ip_address_container]`
-  - superuser access (root)
-    `sudo su` (password: docker)
+  - Run: 
+    ```
+    ssh docker@[ip_address_container]
+    ```
+  - Superuser access (root):
+    ```
+    sudo su
+    ``` 
+    (password: **docker**)
 
 ## License
 GNU General Public License v2
