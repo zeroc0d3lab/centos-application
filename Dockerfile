@@ -4,7 +4,7 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 # -----------------------------------------------------------------------------
 # Set default environment variables
 # -----------------------------------------------------------------------------
-ENV SSH_AUTHORIZED_KEYS="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBJ8ccMJxaQ4R5lDOrd1ei3CHrrOHo9uyNFF6sQQxnDVRUs7pAEBnp/2UYRDv6V6q/8dUV3TTDysZxOMWtvpibmdod0BDYV0vlyBEOpzwC/hGShhzH+ZoWl2bbk+vBEGS/CcinI2EG9XcLNSnCUHWCxLbTprXuIHMhHFYxQtlkXz4eaqR7TUEoJjY1EFU3uMfodwtO2TwXiaqplAbf+eQAkqFGlxxAmsgZUYQ+RJwSaa6iNlRXldqmeqgrueinL9G90YiNaK0NljjJBQVew9zG7I/PA7i+bvFoJRvgFdjl8AVN8cwRBkVQu5B20Y8uBj1bQlpWxhlDZTc+MWMtjAD/ zeroc0d3@zerohost" \
+ENV SSH_AUTHORIZED_KEYS="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+RISZKH6yJGZkm9Rt00w9I/FT+ykaboRir3QvukinMdPw1wE7rzPJ4spoiO7i7xAszhScBw4P/fhIU/sLf2qy88D8+xjZ9sz+3TMX5s/wBGVvith4E1cmV6PxaVY/czGjl62YCqhcx7EAN5+lkjEQ3B82YSSSGu3jao2cNIcLeNpBiuvtBTitNbo52hpGP38Jf8fvv13tr5VoAAEOrsM5vyZKHD14UiAXOea1sYFulz5MEHnTH5MKucknCeAHlrwgq5e/FSt6gh441PR/aJVvQTnFX9NIkjYxBROn/1L2u8yWWbRcIRfHsAfns3P+cVeWSYO0swYDwFM2QM3RSoVT zeroc0d3@zerohost" \
 	SSH_AUTOSTART_SSHD=true \
 	SSH_AUTOSTART_SSHD_BOOTSTRAP=true \
 	SSH_CHROOT_DIRECTORY="%h" \
