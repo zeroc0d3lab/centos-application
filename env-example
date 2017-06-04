@@ -17,3 +17,11 @@ RUBY_VERSION=2.4.1
 #  OPTIONAL ARGUMENTS
 ########################
 CONSUL_OPTIONS=-server -bootstrap-expect 1 -client 0.0.0.0 -ui    # minimal server options
+
+########################
+#  SSH CONFIG
+########################
+SSH_AUTHORIZED_KEYS="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBJ8ccMJxaQ4R5lDOrd1ei3CHrrOHo9uyNFF6sQQxnDVRUs7pAEBnp/2UYRDv6V6q/8dUV3TTDysZxOMWtvpibmdod0BDYV0vlyBEOpzwC/hGShhzH+ZoWl2bbk+vBEGS/CcinI2EG9XcLNSnCUHWCxLbTprXuIHMhHFYxQtlkXz4eaqR7TUEoJjY1EFU3uMfodwtO2TwXiaqplAbf+eQAkqFGlxxAmsgZUYQ+RJwSaa6iNlRXldqmeqgrueinL9G90YiNaK0NljjJBQVew9zG7I/PA7i+bvFoJRvgFdjl8AVN8cwRBkVQu5B20Y8uBj1bQlpWxhlDZTc+MWMtjAD/ zeroc0d3@zerohost"
+SSH_USER=docker
+SSH_USER_PASSWORD=docker
+SSH_USER_PASSWORD_HASHED=false
