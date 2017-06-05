@@ -25,6 +25,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ${APPLICATION}:/application
     environment:
+      - SSH_AUTHORIZED_KEYS=${SSH_AUTHORIZED_KEYS}
+      - SSH_USER=${SSH_USER}
+      - SSH_USER_PASSWORD=${SSH_USER_PASSWORD}
+      - SSH_USER_PASSWORD_HASHED=${SSH_USER_PASSWORD_HASHED}
+      - SSH_ROOT_PASSWORD=${SSH_ROOT_PASSWORD}
       #- CONSUL_AGENT=application                     # consul agent hostname/IP
       #- CONSUL_PORT=8500                             # consul agent port
       #- CONSUL_KEYPREFIX=path/prefix/                # consul key prefix path
