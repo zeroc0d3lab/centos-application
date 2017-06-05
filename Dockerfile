@@ -135,6 +135,14 @@ ENTRYPOINT ["/init"]
 # CMD []
 CMD ["/usr/bin/supervisord", "--configuration=/etc/supervisord.conf"]
 
+USER root
+ONBUILD RUN chmod 700 $HOME/.ssh \
+    && chmod go-w $HOME $HOME/.ssh \ 
+    && chmod 600 $HOME/.ssh/authorized_keys \
+    && chown `whoami` $HOME/.ssh/authorized_keys
+
+ONBUILD RUN cp /root/.ssh/authorized_keys /home/docker/.ssh/authorized_keys
+
 ## NOTE:
 ## *) Run vim then >> :PluginInstall
 ## *) Update plugin vim (vundle) >> :PluginUpdate
