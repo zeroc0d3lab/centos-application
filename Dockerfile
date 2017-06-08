@@ -129,12 +129,11 @@ RUN touch $HOME/.ssh/authorized_keys \
     && chmod 700 $HOME/.ssh \
     && chmod go-w $HOME $HOME/.ssh \
     && chmod 600 $HOME/.ssh/authorized_keys \
-    && chown `whoami` $HOME/.ssh/authorized_keys \
-	  && echo ${SSH_AUTHORIZED_KEYS} > $HOME/.ssh/authorized_keys
+    && chown `whoami` $HOME/.ssh/authorized_keys
 
 ONBUILD RUN mkdir -p /home/docker/.ssh \
             && touch /home/docker/.ssh/authorized_keys \
-            && echo ${SSH_AUTHORIZED_KEYS} > /home/docker/.ssh/authorized_keys
+            && cat /root/.ssh/authorized_keys > /home/docker/.ssh/authorized_keys
 
 #-----------------------------------------------------------------------------
 # Create Workspace Application Folder
