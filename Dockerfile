@@ -122,7 +122,9 @@ RUN echo 'root:'${SSH_ROOT_PASSWORD} | chpasswd
 #-----------------------------------------------------------------------------
 # Generate Public Key
 #-----------------------------------------------------------------------------
-RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa 
+# Create new public key
+# RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa
+
 RUN touch $HOME/.ssh/authorized_keys \
     && chmod 700 $HOME/.ssh \
     && chmod go-w $HOME $HOME/.ssh \
