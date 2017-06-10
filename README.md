@@ -61,5 +61,15 @@ This docker image includes:
     ``` 
     (password: **docker**)
 
+## Notes:
+* Run vim then 
+  ```
+  :PluginInstall
+  ```
+* Update plugin vim (vundle) 
+  ```
+  :PluginUpdate
+  ```
+
 ## License
 GNU General Public License v2
