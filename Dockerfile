@@ -117,19 +117,28 @@ USER root
 #-----------------------------------------------------------------------------
 # Change root Password
 #-----------------------------------------------------------------------------
-RUN echo 'root:'${SSH_ROOT_PASSWORD} | chpasswd
+# RUN echo 'root:'${SSH_ROOT_PASSWORD} | chpasswd
+RUN echo 'root:docker' | chpasswd
 
 #-----------------------------------------------------------------------------
 # Generate Public Key
 #-----------------------------------------------------------------------------
 # Create new public key
-# RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa
+RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa
 
-RUN touch $HOME/.ssh/authorized_keys \
+RUN mkdir -p $HOME/.ssh \
+    && touch $HOME/.ssh/authorized_keys \
     && chmod 700 $HOME/.ssh \
     && chmod go-w $HOME $HOME/.ssh \
     && chmod 600 $HOME/.ssh/authorized_keys \
-    && chown `whoami` $HOME/.ssh/authorized_keys
+    && chown `whoami` $HOME/.ssh/authorized_keys \
+    && cat $HOME/.ssh/id_rsa.pub > $HOME/.ssh/authorized_keys
+
+# Create new pem file from public key
+RUN /usr/bin/ssh-keygen -f $HOME/.ssh/id_rsa.pub -e -m pem > $HOME/.ssh/id_rsa.pem
+
+# Create new public key for host
+RUN /usr/bin/ssh-keygen -A
 
 ONBUILD RUN mkdir -p /home/docker/.ssh \
             && touch /home/docker/.ssh/authorized_keys \
