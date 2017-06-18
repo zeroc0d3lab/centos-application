@@ -29,8 +29,12 @@ This docker image includes:
   ```
   ssh-keygen -t rsa
   ```
-* Add your id_rsa.pub to environment (.env) file
-* Add your id_rsa.pub to SSH_AUTHORIZED_KEYS in Dockerfile
+  or
+  ```
+  ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa
+  ```
+* Add your id_rsa.pub to environment (.env) file to run with "docker-compose", or
+* Add your id_rsa.pub to SSH_AUTHORIZED_KEYS in Dockerfile to run with "docker build -t [docker-image-name] [path-dockerfile-folder]"
 * Rebuild your docker container
   ```
   docker-compose build && docker-compose up --force-recreate
@@ -51,22 +55,22 @@ This docker image includes:
     ```
     (eg: application_1)
 * Access ssh
-  - Run: 
+  - Run:
     ```
     ssh docker@[ip_address_container]
     ```
   - Superuser access (root):
     ```
     sudo su
-    ``` 
+    ```
     (password: **docker**)
 
 ## Notes:
-* Run vim then 
+* Run vim then
   ```
   :PluginInstall
   ```
-* Update plugin vim (vundle) 
+* Update plugin vim (vundle)
   ```
   :PluginUpdate
   ```
