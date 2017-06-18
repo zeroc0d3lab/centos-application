@@ -1,7 +1,7 @@
 ########################
 #  ENVIRONMENT SETUP
 ########################
-APPLICATION=/home/zeroc0d3/lab/docker-centos
+APPLICATION=/home/zeroc0d3/LAB/myrails
 APPLICATION_PORT=2222
 WORKSPACE_PORT=8500
 
