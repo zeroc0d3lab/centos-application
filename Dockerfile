@@ -90,9 +90,8 @@ COPY rootfs/ /
 #-----------------------------------------------------------------------------
 # Setup TrueColors (Terminal)
 #-----------------------------------------------------------------------------
-RUN cd /root/colors \
-    && /bin/sh 24-bit-colors.sh
-		
+RUN /bin/sh ./root/colors/24-bit-colors.sh
+
 RUN mkdir -p \
 		/etc/supervisord.d/ \
 	&& cp -pf \
