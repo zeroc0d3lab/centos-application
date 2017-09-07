@@ -85,9 +85,9 @@ RUN sed -i \
 #-----------------------------------------------------------------------------
 # Setup TrueColors (Terminal)
 #-----------------------------------------------------------------------------
-COPY ./rootfs/root/colors/24-bit-colors.sh /root/colors/24-bit-colors.sh
-RUN ./root/colors/24-bit-colors.sh
-	
+COPY ./rootfs/root/colors/24-bit-color.sh /root/colors/24-bit-color.sh
+RUN ./root/colors/24-bit-color.sh
+
 #-----------------------------------------------------------------------------
 # Finalize (reconfigure)
 #-----------------------------------------------------------------------------
@@ -153,6 +153,12 @@ ONBUILD RUN mkdir -p /home/docker/.ssh \
             && chmod 700 /home/docker/.ssh \
             && chmod 600 /home/docker/.ssh/authorized_keys \
             && chmod 600 /home/docker/.ssh/id_rsa*
+
+#-----------------------------------------------------------------------------
+# Setup TrueColors (Terminal)
+#-----------------------------------------------------------------------------
+COPY ./rootfs/root/colors/24-bit-color.sh /root/colors/24-bit-color.sh
+RUN ./root/colors/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Create Workspace Application Folder
