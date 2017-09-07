@@ -87,6 +87,12 @@ RUN sed -i \
 #-----------------------------------------------------------------------------
 COPY rootfs/ /
 
+#-----------------------------------------------------------------------------
+# Setup TrueColors (Terminal)
+#-----------------------------------------------------------------------------
+RUN cd /root/colors \
+    && /bin/sh 24-bit-colors.sh
+		
 RUN mkdir -p \
 		/etc/supervisord.d/ \
 	&& cp -pf \
@@ -146,7 +152,7 @@ ONBUILD RUN mkdir -p /home/docker/.ssh \
             && /usr/bin/ssh-keygen -f /home/docker/.ssh/id_rsa.pub -e -m pem > /home/docker/.ssh/id_rsa.pem \
             && chmod 700 /home/docker/.ssh \
             && chmod 600 /home/docker/.ssh/authorized_keys \
-            && chmod 600 /home/docker/.ssh/id_rsa* 
+            && chmod 600 /home/docker/.ssh/id_rsa*
 
 #-----------------------------------------------------------------------------
 # Create Workspace Application Folder
