@@ -115,4 +115,4 @@ You can run docker-compose for different environment with selected containers
   ```
 
 ## License
-GNU General Public License v2
+[**GNU General Public License v2**](https://github.com/zeroc0d3lab/centos-application/blob/master/LICENSE)
