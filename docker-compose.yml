@@ -17,7 +17,8 @@ services:
   application:
     depends_on:
       - consul
-    image: zeroc0d3lab/centos-application
+    build:
+      context: .
     ports:
       - "${APPLICATION_PORT}:22"
     volumes:
