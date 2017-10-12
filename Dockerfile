@@ -18,8 +18,8 @@ ENV SSH_AUTHORIZED_KEYS='' \
     SSH_ROOT_PASSWORD='docker' \
     SSH_USER_PASSWORD_HASHED=false \
     SSH_USER_SHELL='/bin/bash' \
-    PATH_WORKSPACE=/home/docker \
-    PATH_APPLICATION=/home/docker/workspace
+    PATH_HOME=/home/docker \
+    PATH_WORKSPACE=/home/docker/workspace
 
 #-----------------------------------------------------------------------------
 # Find Fastest Repo & Update Repo
@@ -156,12 +156,12 @@ RUN mkdir -p /home/docker/.ssh \
 #-----------------------------------------------------------------------------
 # Create Workspace Application Folder
 #-----------------------------------------------------------------------------
-RUN mkdir -p ${PATH_APPLICATION}
+RUN mkdir -p ${PATH_WORKSPACE}
 
 #-----------------------------------------------------------------------------
 # Fixing ownership for 'docker' user
 #-----------------------------------------------------------------------------
-RUN chown -R docker:docker ${PATH_WORKSPACE}
+RUN chown -R docker:docker ${PATH_HOME}
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
@@ -171,7 +171,7 @@ EXPOSE 22
 #-----------------------------------------------------------------------------
 # Set Volume Application
 #-----------------------------------------------------------------------------
-VOLUME [${PATH_APPLICATION}, "/root"]
+VOLUME [${PATH_WORKSPACE}, "/root"]
 
 #-----------------------------------------------------------------------------
 # Run Init Docker Container
