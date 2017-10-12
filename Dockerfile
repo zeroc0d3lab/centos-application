@@ -119,10 +119,11 @@ RUN mkdir -p \
 
 USER root
 #-----------------------------------------------------------------------------
-# Change root Password
+# Change 'root' & 'docker' user Password
 #-----------------------------------------------------------------------------
 # RUN echo 'root:'${SSH_ROOT_PASSWORD} | chpasswd
-RUN echo 'root:docker' | chpasswd
+RUN echo 'root:docker' | chpasswd \
+    echo 'docker:docker' | chpasswd
 
 #-----------------------------------------------------------------------------
 # Generate Public Key
@@ -146,8 +147,8 @@ RUN /usr/bin/ssh-keygen -A
 
 RUN mkdir -p /home/docker/.ssh \
     && touch /home/docker/.ssh/authorized_keys \
-    && cat /root/.ssh/authorized_keys > /home/docker/.ssh/authorized_keys \
-    && /usr/bin/ssh-keygen -f /home/docker/.ssh/id_rsa.pub -e -m pem > /home/docker/.ssh/id_rsa.pem \
+    && cat $HOME/.ssh/id_rsa.pub > /home/docker/.ssh/authorized_keys \
+    && /usr/bin/ssh-keygen -f $HOME/.ssh/id_rsa.pub -e -m pem > /home/docker/.ssh/id_rsa.pem \
     && chmod 700 /home/docker/.ssh \
     && chmod 600 /home/docker/.ssh/authorized_keys \
     && chmod 600 /home/docker/.ssh/id_rsa*
