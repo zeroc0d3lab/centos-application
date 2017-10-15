@@ -110,19 +110,18 @@ RUN mkdir -p \
 	&& chmod 700 \
 		/usr/sbin/{scmi,sshd-{bootstrap,wrapper}}
 
-USER root
 #-----------------------------------------------------------------------------
 # Change 'root' & 'docker' user Password
 #-----------------------------------------------------------------------------
 # RUN echo 'root:'${SSH_ROOT_PASSWORD} | chpasswd
 RUN echo 'root:docker' | chpasswd \
-    echo 'docker:docker' | chpasswd
+    && echo 'docker:docker' | chpasswd
 
 #-----------------------------------------------------------------------------
 # Generate Public Key
 #-----------------------------------------------------------------------------
 # Create new public key
-RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa
+RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa -q -N ""
 
 RUN mkdir -p $HOME/.ssh \
     && touch $HOME/.ssh/authorized_keys \
@@ -155,6 +154,11 @@ RUN mkdir -p ${PATH_WORKSPACE}
 # Fixing ownership for 'docker' user
 #-----------------------------------------------------------------------------
 RUN chown -R docker:docker ${PATH_HOME}
+
+#-----------------------------------------------------------------------------
+# Cleanup 'root' folder
+#-----------------------------------------------------------------------------
+RUN rm -f /root/*.tar.gz
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
