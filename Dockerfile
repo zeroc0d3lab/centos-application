@@ -122,7 +122,7 @@ RUN echo 'root:docker' | chpasswd \
 # Generate Public Key
 #-----------------------------------------------------------------------------
 # Create new public key
-RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f /root/.ssh/id_rsa -q -N ""; sync
+RUN /usr/bin/ssh-keygen -t rsa -b 4096 -C "zeroc0d3.team@gmail.com" -f $HOME/.ssh/id_rsa -q -N ""; sync
 
 RUN mkdir -p $HOME/.ssh \
     && touch $HOME/.ssh/authorized_keys \
